@@ -1,0 +1,81 @@
+<section
+  appRevealOnScroll
+  class="flex flex-col justify-center items-center py-[32px] px-[20px] md:py-[48px] md:px-[32px] 2xl:py-[96px] 2xl:px-[32px] w-full"
+  aria-labelledby="featured-highlights-heading"
+>
+  <div class="flex flex-col items-start gap-[48px] w-full md:max-w-[704px] 2xl:max-w-[1542px]">
+    <header class="flex flex-col items-start gap-[24px] w-full">
+      <h2
+        id="featured-highlights-heading"
+        class="w-full font-inter font-bold text-[30px] leading-[32px] text-black md:text-[48px] md:leading-[58px]"
+      >
+        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et.
+      </h2>
+      <p class="w-full font-inter font-normal text-[16px] leading-[24px] text-black">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
+        Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur
+        pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
+        Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros, eget tempus orci
+        facilisis id.
+      </p>
+    </header>
+
+    <div class="embla w-full" role="region" aria-label="Featured highlights carousel">
+      <div #emblaViewport class="embla__viewport">
+        <div class="embla__container" role="list">
+          <article
+            *ngFor="let item of items; let i = index; trackBy: trackByCarouselItem"
+            appRevealOnScroll
+            data-reveal-item
+            [style.--reveal-index]="i"
+            class="embla__slide"
+            role="listitem"
+          >
+            <img [src]="item.image" [alt]="item.title" class="embla__image" />
+
+            <div class="carousel-card__overlay">
+              <div class="carousel-card__stack">
+                <h3 class="font-inter font-bold text-[30px] leading-[38px] text-white overflow-hidden text-ellipsis whitespace-nowrap">
+                  {{ item.title }}
+                </h3>
+                <p class="font-inter font-normal text-[16px] leading-[24px] text-white line-clamp-2">
+                  {{ item.description }}
+                </p>
+
+                <a
+                  href="#"
+                  class="carousel-card__download"
+                  [attr.aria-label]="'Download ' + item.title"
+                  (click)="$event.preventDefault()"
+                >
+                  <span class="font-inter font-bold text-[16px] leading-[24px] text-white">
+                    {{ item.subtitle }}
+                  </span>
+
+                  <div class="w-[24px] h-[24px] relative" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12 2.75C12.4142 2.75 12.75 3.08579 12.75 3.5V11.25L15.2197 8.78033C15.5126 8.48744 15.9874 8.48744 16.2803 8.78033C16.5732 9.07322 16.5732 9.54811 16.2803 9.841L12.5303 13.591C12.2374 13.8839 11.7626 13.8839 11.4697 13.591L7.71967 9.841C7.42678 9.54811 7.42678 9.07322 7.71967 8.78033C8.01256 8.48744 8.48744 8.48744 8.78033 8.78033L11.25 11.25V3.5C11.25 3.08579 11.5858 2.75 12 2.75Z"
+                        fill="white"
+                      />
+                      <path
+                        opacity="0.5"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M19.25 14.5C19.25 14.0858 19.5858 13.75 20 13.75C20.4142 13.75 20.75 14.0858 20.75 14.5V17C20.75 19.3472 18.8472 21.25 16.5 21.25H7.5C5.15279 21.25 3.25 19.3472 3.25 17V14.5C3.25 14.0858 3.58579 13.75 4 13.75C4.41421 13.75 4.75 14.0858 4.75 14.5V17C4.75 18.5188 5.98122 19.75 7.5 19.75H16.5C18.0188 19.75 19.25 18.5188 19.25 17V14.5Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

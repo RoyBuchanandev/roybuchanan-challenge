@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+    --font-figtree: "Figtree", sans-serif;
+    --font-inter: "Inter", sans-serif;
+}

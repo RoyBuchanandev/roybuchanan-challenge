@@ -1,0 +1,47 @@
+:host {
+  --reveal-duration: 420ms;
+  --reveal-distance: 18px;
+  --reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-stagger-step: 70ms;
+}
+
+@media (min-width: 48rem) {
+  :host {
+    --reveal-stagger-step: 90ms;
+  }
+}
+
+@media (min-width: 96rem) {
+  :host {
+    --reveal-stagger-step: 110ms;
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition: opacity var(--reveal-duration) var(--reveal-easing),
+    transform var(--reveal-duration) var(--reveal-easing);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+[data-reveal][data-reveal-item] {
+  transition-delay: calc(var(--reveal-index, 0) * var(--reveal-stagger-step));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  [data-reveal][data-reveal-item] {
+    transition-delay: 0ms;
+  }
+}
